@@ -1,8 +1,8 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class LocatorTest extends BaseTest {
@@ -19,6 +19,8 @@ public class LocatorTest extends BaseTest {
         driver.findElement(By.id("login-button")).click();
         WebElement theFirstItemName = driver.findElement(By.linkText("Sauce Labs Backpack"));
         WebElement theSecondItemName = driver.findElement(By.partialLinkText("Bike"));
+
+        /*xpath*/
         WebElement theFirstItemNameTwo = driver.findElement(By.xpath("//div/a[@id='item_4_title_link']"));
         WebElement theFirstItemDescription = driver.findElement(By.xpath("//div[text()='carry.allTheThings()"+
                         " with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.']"));
@@ -33,8 +35,7 @@ public class LocatorTest extends BaseTest {
         WebElement facebookElement = driver.findElement(By.xpath("//li[@class='social_linkedin']//preceding::li[@class='social_facebook']"));
         WebElement SauceLabsFleeceJacketItemName = driver.findElement(By.xpath("//div[@class='inventory_item_name ' and text()='Sauce Labs Fleece Jacket']"));
 
-        /* cssSelector*/
-
+        /*cssSelector*/
         WebElement logoSwagLabs1 = driver.findElement(By.cssSelector(".app_logo"));
         WebElement logoSwagLabs2 = driver.findElement(By.cssSelector(".header_label .app_logo"));
         WebElement burgerButton = driver.findElement(By.cssSelector("#react-burger-menu-btn"));
@@ -48,7 +49,6 @@ public class LocatorTest extends BaseTest {
         List<WebElement> imagesLinks = driver.findElements(By.cssSelector("[data-test*='img-link']"));
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
         WebElement closeButtonInMenuBlock= driver.findElement(By.cssSelector("[alt~='Close']"));
-
         driver.get("https://www.saucedemo.com/");
         WebElement loginButton = driver.findElement(By.cssSelector(".submit-button.btn_action"));
    }
