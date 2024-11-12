@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
 import java.util.List;
 
 public class LocatorTest extends BaseTest {
@@ -22,8 +23,8 @@ public class LocatorTest extends BaseTest {
 
         /*xpath*/
         WebElement theFirstItemNameTwo = driver.findElement(By.xpath("//div/a[@id='item_4_title_link']"));
-        WebElement theFirstItemDescription = driver.findElement(By.xpath("//div[text()='carry.allTheThings()"+
-                        " with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.']"));
+        WebElement theFirstItemDescription = driver.findElement(By.xpath("//div[text()='carry.allTheThings()" +
+                " with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.']"));
         WebElement logoOnProductsPage = driver.findElement(By.xpath("//div[contains(@class,'logo')]"));
         WebElement theSecondItemDescription = driver.findElement(By.xpath("//div[contains(text(),'1 AAA battery included.')]"));
         WebElement footerOnProductsPage = driver.findElement(By.xpath("//a//ancestor::footer[@class='footer']"));
@@ -48,10 +49,10 @@ public class LocatorTest extends BaseTest {
         List<WebElement> itemsPrices = driver.findElements(By.cssSelector("[data-test$='price']"));
         List<WebElement> imagesLinks = driver.findElements(By.cssSelector("[data-test*='img-link']"));
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
-        WebElement closeButtonInMenuBlock= driver.findElement(By.cssSelector("[alt~='Close']"));
+        WebElement closeButtonInMenuBlock = driver.findElement(By.cssSelector("[alt~='Close']"));
         driver.get("https://www.saucedemo.com/");
         WebElement loginButton = driver.findElement(By.cssSelector(".submit-button.btn_action"));
-   }
+    }
 }
 
 
