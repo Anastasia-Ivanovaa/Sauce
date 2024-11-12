@@ -5,9 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.CheckoutPage;
 import pages.LoginPage;
 import pages.ProductsPage;
 import pages.ShoppingCartPage;
+
 import java.time.Duration;
 
 public class BaseTest {
@@ -15,6 +17,7 @@ public class BaseTest {
     LoginPage loginPage;
     ProductsPage productsPage;
     ShoppingCartPage shoppingCartPage;
+    CheckoutPage checkoutPage;
 
     @BeforeMethod
     public void setUp() {
@@ -26,6 +29,7 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         shoppingCartPage = new ShoppingCartPage(driver);
+        checkoutPage = new CheckoutPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
