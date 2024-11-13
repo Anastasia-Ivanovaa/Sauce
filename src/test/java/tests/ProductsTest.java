@@ -1,9 +1,9 @@
 package tests;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class ProductsTest extends BaseTest {
 
@@ -18,15 +18,17 @@ public class ProductsTest extends BaseTest {
 
     @Test
     public void checkRemovingProductFromCart() {
+        SoftAssert softAssert = new SoftAssert();
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddButton("Sauce Labs Bolt T-Shirt");
         productsPage.openCart();
         String addedToTheCartProductName = shoppingCartPage.getProductName();
-        assertEquals(addedToTheCartProductName, "Sauce Labs Bolt T-Shirt", "Product is NOT found.");
+        softAssert.assertEquals(addedToTheCartProductName, "Sauce Labs Bolt T-Shirt", "Product is NOT found.");
         shoppingCartPage.clickOnContinueShoppingButton();
         productsPage.clickRemoveButton("Sauce Labs Bolt T-Shirt");
         productsPage.openCart();
-        assertTrue(shoppingCartPage.shoppingCartIsEmpty(), "Product was NOT deleted.");
+        softAssert.assertTrue(shoppingCartPage.shoppingCartIsEmpty(), "Product was NOT deleted.");
+        softAssert.assertAll();
     }
 }

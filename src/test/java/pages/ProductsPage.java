@@ -8,8 +8,8 @@ public class ProductsPage extends BasePage {
     private final By PAGE_TITLE = By.cssSelector(".title");
     private final By SHOPPING_CART = By.cssSelector(".shopping_cart_link");
 
-    private final String ADD_TO_CART_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'inventory_item']//button";
-    private final String REMOVE_FROM_CART_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'inventory_item']//button";
+    private final String ADD_TO_CART_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'inventory_item']//button[text()='Add to cart']";
+    private final String REMOVE_FROM_CART_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'inventory_item']//button[text()='Remove']";
 
     public ProductsPage(WebDriver driver) {
         super(driver);
