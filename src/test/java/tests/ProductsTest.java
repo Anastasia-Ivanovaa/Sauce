@@ -23,7 +23,7 @@ public class ProductsTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddButton("Sauce Labs Bolt T-Shirt");
         productsPage.openCart();
-        String addedToTheCartProductName = shoppingCartPage.getProductName();
+        String addedToTheCartProductName = shoppingCartPage.getAddedProductName("Sauce Labs Bolt T-Shirt");
         softAssert.assertEquals(addedToTheCartProductName, "Sauce Labs Bolt T-Shirt", "Product is NOT found.");
         shoppingCartPage.clickOnContinueShoppingButton();
         productsPage.clickRemoveButton("Sauce Labs Bolt T-Shirt");

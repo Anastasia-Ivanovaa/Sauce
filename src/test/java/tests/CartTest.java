@@ -48,7 +48,7 @@ public class CartTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
-        String addedProductNameInTheCart = shoppingCartPage.getProductName();
+        String addedProductNameInTheCart = shoppingCartPage.getAddedProductName(productName);
         assertEquals(addedProductNameInTheCart, productName, "Product names are NOT matched");
     }
 

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class ShoppingCartPage extends BasePage {
 
     private final By PAGE_TITLE = By.cssSelector(".title");
+    private final String ADDED_PRODUCT_NAME_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'cart_item']//div[@class='inventory_item_name']";
     private final String PRODUCT_PRICE_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'cart_item']//div[@class='inventory_item_price']";
     private final String PRODUCT_QUANTITY_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'cart_item']//div[@class='cart_quantity']";
     private final String PRODUCT_DESCRIPTION_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'cart_item']//div[@class='inventory_item_desc']";
@@ -18,10 +19,14 @@ public class ShoppingCartPage extends BasePage {
         super(driver);
     }
 
-    public String getProductName() {
-        return driver.findElement(By.cssSelector(".inventory_item_name")).getText();
-    }
+    public String getAddedProductName(String product) {
+        By productName = By.xpath(String.format(ADDED_PRODUCT_NAME_PATTERN, product));
+        return driver.findElement(productName).getText();
+           }
 
+    public String getPageTitle() {
+        return driver.findElement(PAGE_TITLE).getText();
+    }
     public String getProductDescription(String product) {
         By productDescription = By.xpath(String.format(PRODUCT_DESCRIPTION_PATTERN, product));
         return driver.findElement(productDescription).getText();
