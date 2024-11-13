@@ -2,20 +2,19 @@ package tests;
 
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.testng.Assert.*;
 
 public class CartTest extends BaseTest {
 
     @Test
-    public void checkEndToEndPath() {
-        String productName1 = "Sauce Labs Backpack";
-        String productPrice1 = "$29.99";
-
-        String productName2 = "Sauce Labs Bike Light";
-        String productPrice2 = "$9.99";
-
-        String productName3 = "Sauce Labs Onesie";
-        String productPrice3 = "$7.99";
+    public void checkEndToEndCase() {
+        Map<String, String> products = new HashMap<>();
+        products.put("Sauce Labs Backpack", "$29.99");
+        products.put("Sauce Labs Bike Light", "$9.99");
+        products.put("Sauce Labs Onesie", "$7.99");
 
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -24,14 +23,9 @@ public class CartTest extends BaseTest {
         productsPage.clickAddButton("Sauce Labs Onesie");
         productsPage.openCart();
 
-        assertEquals(shoppingCartPage.getProductName(), productName1);
-        assertEquals(shoppingCartPage.getProductPrice(), productPrice1);
-
-        assertEquals(shoppingCartPage.getProductName(), productName2);
-        assertEquals(shoppingCartPage.getProductPrice(), productPrice2);
-
-        assertEquals(shoppingCartPage.getProductName(), productName3);
-        assertEquals(shoppingCartPage.getProductPrice(), productPrice3);
+        assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Backpack"), products.get("Sauce Labs Backpack"));
+        assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Bike Light"), products.get("Sauce Labs Bike Light"));
+        assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Onesie"), products.get("Sauce Labs Onesie"));
 
         shoppingCartPage.clickRemoveButton("Sauce Labs Backpack");
         shoppingCartPage.clickRemoveButton("Sauce Labs Bike Light");
@@ -47,8 +41,8 @@ public class CartTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
-        String addedproductNameInTheCart = shoppingCartPage.getProductName();
-        assertEquals(addedproductNameInTheCart, productName, "Product names are not matched");
+        String addedProductNameInTheCart = shoppingCartPage.getProductName();
+        assertEquals(addedProductNameInTheCart, productName, "Product names are NOT matched");
     }
 
     @Test
@@ -58,7 +52,7 @@ public class CartTest extends BaseTest {
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.openCart();
         shoppingCartPage.clickRemoveButton("Sauce Labs Bike Light");
-        assertTrue(shoppingCartPage.shoppingCartIsEmpty(), "Product wasn't removed");
+        assertTrue(shoppingCartPage.shoppingCartIsEmpty(), "Product was NOT removed");
     }
 
     @Test
@@ -69,18 +63,39 @@ public class CartTest extends BaseTest {
         productsPage.openCart();
         shoppingCartPage.clickOnContinueShoppingButton();
         String productsPageName = productsPage.getPageTitle();
-        assertEquals(productsPageName,"Products","Products page was NOT opened.");
+        assertEquals(productsPageName, "Products", "Products page was NOT opened.");
     }
 
     @Test
-    public void checkCheckoutOpensCheckoutPage(){
+    public void checkCheckoutOpensCheckoutPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();
-        String openedPageName = checkoutPage.getPageTitle();
-        assertEquals(openedPageName,  "Checkout: Your Information", "Checkout: Your Information was NOT opened");
+        String openedPageName = checkoutInformationPage.getPageTitle();
+        assertEquals(openedPageName, "Checkout: Your Information", "'Checkout: Your Information' page was NOT opened");
     }
 
+    @Test
+    public void checkAddedToTheCartProductQuantity() {
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
+        productsPage.clickAddButton("Sauce Labs Bike Light");
+        productsPage.openCart();
+        String productQuantity = shoppingCartPage.getProductQuantity("Sauce Labs Bike Light");
+        assertEquals(productQuantity, "1", "The quantity is not equal to 1.");
+    }
+
+    @Test
+    public void checkShoppingBadgeValue() {
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
+        productsPage.clickAddButton("Sauce Labs Bike Light");
+        productsPage.clickAddButton("Sauce Labs Backpack");
+        productsPage.clickAddButton("Sauce Labs Bolt T-Shirt");
+        productsPage.openCart();
+        String valueOnBadge = shoppingCartPage.getAddedProductQtyToTheCart();
+        assertEquals(valueOnBadge, "3", "The added quantity of products was not matched.");
+    }
 }
