@@ -17,3 +17,7 @@
 ### End-to-end case
 1.  Add three items to the cart -> check their titles and prices -> remove all items from the cart -> check that the 
 cart is empty<br/>
+
+### Checkout Information page
+1. Check a blank **First Name** in the form.</br>
+
