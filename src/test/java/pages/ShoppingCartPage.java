@@ -18,10 +18,6 @@ public class ShoppingCartPage extends BasePage {
         super(driver);
     }
 
-    public String getPageTitle() {
-        return driver.findElement(PAGE_TITLE).getText();
-    }
-
     public String getProductName() {
         return driver.findElement(By.cssSelector(".inventory_item_name")).getText();
     }

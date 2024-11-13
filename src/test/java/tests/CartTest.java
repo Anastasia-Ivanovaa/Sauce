@@ -1,6 +1,7 @@
 package tests;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ public class CartTest extends BaseTest {
 
     @Test
     public void checkEndToEndCase() {
+        SoftAssert softAssert = new SoftAssert();
         Map<String, String> products = new HashMap<>();
         products.put("Sauce Labs Backpack", "$29.99");
         products.put("Sauce Labs Bike Light", "$9.99");
@@ -23,15 +25,20 @@ public class CartTest extends BaseTest {
         productsPage.clickAddButton("Sauce Labs Onesie");
         productsPage.openCart();
 
-        assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Backpack"), products.get("Sauce Labs Backpack"));
-        assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Bike Light"), products.get("Sauce Labs Bike Light"));
-        assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Onesie"), products.get("Sauce Labs Onesie"));
+        softAssert.assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Backpack"), products.get("Sauce Labs Backpack"),
+                "Sauce Labs Backpack item is NOT found");
+        softAssert.assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Bike Light"), products.get("Sauce Labs Bike Light"),
+                "Sauce Labs Bike Light item is NOT found");
+        softAssert.assertEquals(shoppingCartPage.getProductPrice("Sauce Labs Onesie"), products.get("Sauce Labs Onesie"),
+                "Sauce Labs Onesie item is NOT found");
+
 
         shoppingCartPage.clickRemoveButton("Sauce Labs Backpack");
         shoppingCartPage.clickRemoveButton("Sauce Labs Bike Light");
         shoppingCartPage.clickRemoveButton("Sauce Labs Onesie");
 
-        assertTrue(shoppingCartPage.shoppingCartIsEmpty(), "Cart contains products");
+        softAssert.assertTrue(shoppingCartPage.shoppingCartIsEmpty(), "Cart contains products");
+        softAssert.assertAll();
     }
 
     @Test
