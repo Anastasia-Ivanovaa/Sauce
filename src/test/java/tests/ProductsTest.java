@@ -7,7 +7,8 @@ import static org.testng.Assert.assertEquals;
 
 public class ProductsTest extends BaseTest {
 
-    @Test
+    @Test (testName = "Remove button", description = "Check that Remove button appears for added to the cart product",
+            priority = 2, retryAnalyzer = Retry.class)
     public void checkRemoveButtonAppears() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -16,7 +17,8 @@ public class ProductsTest extends BaseTest {
         assertEquals(removeButton, "Remove", "Remove button is NOT available.");
     }
 
-    @Test
+    @Test(testName = "Remove product using Remove button on Products page", description = "Check that Remove button delete added to the cart product",
+            priority = 1)
     public void checkRemovingProductFromCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();

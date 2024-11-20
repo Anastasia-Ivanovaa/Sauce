@@ -1,12 +1,13 @@
 package tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Login into the application", description = "Check positive login", priority = 1)
     public void checkLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -15,33 +16,21 @@ public class LoginTest extends BaseTest {
                 "The page Products was not opened");
     }
 
-    @Test
-    public void checkNameBlank() {
+    @DataProvider(name="LoginData")
+    public Object[][] loginData() {
+        return new Object[][]{
+                {"", "secret_sauce", "Epic sadface: Username is required"},
+                {"standard_user", "", "Epic sadface: Password is required"},
+                {"standard_user", "123456", "Epic sadface: Username and password do not match any user in this service"}
+        };
+    }
+
+    @Test (dataProvider = "LoginData")
+    public void test(String user, String password, String expectedError){
         loginPage.open();
-        loginPage.login("", "secret_sauce");
+        loginPage.login(user, password);
         String errorMessage = loginPage.getErrorMessage();
-        assertEquals(loginPage.getErrorMessage(),
-                "Epic sadface: Username is required",
+        assertEquals(loginPage.getErrorMessage(), expectedError,
                 "The Username is not valid");
-    }
-
-    @Test
-    public void checkPasswordBlank() {
-        loginPage.open();
-        loginPage.login("standard_user", "");
-        String errorMessage = loginPage.getErrorMessage();
-        assertEquals(loginPage.getErrorMessage(),
-                "Epic sadface: Password is required",
-                "The Password is not valid");
-    }
-
-    @Test
-    public void checkInvalidPassword() {
-        loginPage.open();
-        loginPage.login("standard_user", "123456");
-        String errorMessage = loginPage.getErrorMessage();
-        assertEquals(errorMessage,
-                "Epic sadface: Username and password do not match any user in this service",
-                "The message is not valid");
     }
 }
