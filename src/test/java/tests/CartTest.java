@@ -10,7 +10,8 @@ import static org.testng.Assert.*;
 
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(testName = "End-to-end test", description = "Add products to the cart>remove products from the cart>check the cart is empty",
+            priority = 2)
     public void checkEndToEndCase() {
         SoftAssert softAssert = new SoftAssert();
         Map<String, String> products = new HashMap<>();
@@ -41,7 +42,8 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Add product to the cart", description = "Check that product is added to the cart",
+            priority = 1)
     public void checkAddingProductToTheCart() {
         String productName = "Sauce Labs Backpack";
         loginPage.open();
@@ -52,7 +54,8 @@ public class CartTest extends BaseTest {
         assertEquals(addedProductNameInTheCart, productName, "Product names are NOT matched");
     }
 
-    @Test
+    @Test(testName = "Remove product from cart", description = "Check that the product is removed from cart",
+            priority = 1)
     public void checkRemovingProductFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -62,7 +65,8 @@ public class CartTest extends BaseTest {
         assertTrue(shoppingCartPage.shoppingCartIsEmpty(), "Product was NOT removed");
     }
 
-    @Test
+    @Test(testName = "Open Products page using Continue Shopping button", description = "Check that Continue Shopping opens Products page",
+            priority = 1)
     public void checkContinueShoppingOpensProducts() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -73,7 +77,8 @@ public class CartTest extends BaseTest {
         assertEquals(productsPageName, "Products", "Products page was NOT opened.");
     }
 
-    @Test
+    @Test(testName = "Open Checkout page using Checkout button", description = "Check that Checkout button opens Checkout page",
+            priority = 1)
     public void checkCheckoutOpensCheckoutPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -84,7 +89,8 @@ public class CartTest extends BaseTest {
         assertEquals(openedPageName, "Checkout: Your Information", "'Checkout: Your Information' page was NOT opened");
     }
 
-    @Test
+    @Test(testName = "Quantity of added to the Cart product", description = "Check that quantity of added products is correct in the shopping cart",
+            priority = 2, enabled = false)
     public void checkAddedToTheCartProductQuantity() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -94,7 +100,8 @@ public class CartTest extends BaseTest {
         assertEquals(productQuantity, "1", "The quantity is not equal to 1.");
     }
 
-    @Test
+    @Test(testName = "Shopping badge value", description = "Check that the value on shopping badge is correct",
+            priority = 2)
     public void checkShoppingBadgeValue() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

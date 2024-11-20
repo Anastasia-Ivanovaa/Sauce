@@ -6,7 +6,8 @@ import static org.testng.Assert.assertEquals;
 
 public class CheckoutInformationTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Blank First Name in checkout info", description = "Check user cannot link to 'Checkout: Overview' page if FS is blank",
+            priority = 1)
     public void checkFirstNameBlank() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

@@ -19,9 +19,9 @@ public class ProductsPage extends BasePage {
         return driver.findElement(PAGE_TITLE).getText();
     }
 
-    public String getRemoveButton(String product){
-        By addToCart = By.xpath(String.format(ADD_TO_CART_PATTERN, product));
-        return driver.findElement(addToCart).getText();
+    public String getRemoveButton(String product) {
+        By removeFromCart = By.xpath(String.format(REMOVE_FROM_CART_PATTERN, product));
+        return driver.findElement(removeFromCart).getText();
     }
 
     public void clickAddButton(String product) {
