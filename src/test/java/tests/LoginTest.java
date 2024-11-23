@@ -30,7 +30,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login(user, password);
         String errorMessage = loginPage.getErrorMessage();
-        assertEquals(loginPage.getErrorMessage(), expectedError,
+        assertEquals(errorMessage, expectedError,
                 "The Username is not valid");
     }
 }
