@@ -15,6 +15,7 @@ import pages.ShoppingCartPage;
 
 import java.time.Duration;
 
+@Listeners(TestListener.class)
 public class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
@@ -24,7 +25,7 @@ public class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod
-    public void setUp(@Optional("firefox") String browser) {
+    public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
