@@ -22,11 +22,12 @@ public class ShoppingCartPage extends BasePage {
     public String getAddedProductName(String product) {
         By productName = By.xpath(String.format(ADDED_PRODUCT_NAME_PATTERN, product));
         return driver.findElement(productName).getText();
-           }
+    }
 
     public String getPageTitle() {
         return driver.findElement(PAGE_TITLE).getText();
     }
+
     public String getProductDescription(String product) {
         By productDescription = By.xpath(String.format(PRODUCT_DESCRIPTION_PATTERN, product));
         return driver.findElement(productDescription).getText();

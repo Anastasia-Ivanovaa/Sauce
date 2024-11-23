@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckoutInformationPage extends BasePage {
 
@@ -23,6 +22,7 @@ public class CheckoutInformationPage extends BasePage {
     }
 
     public void addCheckoutInfo(String firstName, String lastName, String zipCode) {
+        driver.findElement(FIRST_NAME_FIELD).click();
         driver.findElement(FIRST_NAME_FIELD).sendKeys(firstName);
         driver.findElement(LAST_NAME_FIELD).sendKeys(lastName);
         driver.findElement(POSTAL_CODE_FIELD).sendKeys(zipCode);
