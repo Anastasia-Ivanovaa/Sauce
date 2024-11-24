@@ -8,10 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.*;
-import pages.CheckoutInformationPage;
-import pages.LoginPage;
-import pages.ProductsPage;
-import pages.ShoppingCartPage;
+import pages.*;
 
 import java.time.Duration;
 
@@ -22,6 +19,8 @@ public class BaseTest {
     ProductsPage productsPage;
     ShoppingCartPage shoppingCartPage;
     CheckoutInformationPage checkoutInformationPage;
+    CheckoutOverviewPage checkoutOverviewPage;
+    CheckoutCompletePage checkoutCompletePage;
 
     @Parameters({"browser"})
     @BeforeMethod
@@ -43,6 +42,8 @@ public class BaseTest {
         productsPage = new ProductsPage(driver);
         shoppingCartPage = new ShoppingCartPage(driver);
         checkoutInformationPage = new CheckoutInformationPage(driver);
+        checkoutOverviewPage = new CheckoutOverviewPage(driver);
+        checkoutCompletePage = new CheckoutCompletePage(driver);
     }
 
     @AfterMethod(alwaysRun = true)

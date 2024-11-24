@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
                 "The page Products was not opened");
     }
 
-    @DataProvider(name="LoginData")
+    @DataProvider(name = "LoginData")
     public Object[][] loginData() {
         return new Object[][]{
                 {"", "secret_sauce", "Epic sadface: Username is required"},
@@ -25,12 +25,12 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test (dataProvider = "LoginData")
-    public void test(String user, String password, String expectedError){
+    @Test(dataProvider = "LoginData", testName = "Invalid login data")
+    public void test(String user, String password, String expectedError) {
         loginPage.open();
         loginPage.login(user, password);
         String errorMessage = loginPage.getErrorMessage();
-        assertEquals(loginPage.getErrorMessage(), expectedError,
+        assertEquals(errorMessage, expectedError,
                 "The Username is not valid");
     }
 }

@@ -90,7 +90,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test(testName = "Quantity of added to the Cart product", description = "Check that quantity of added products is correct in the shopping cart",
-            priority = 2, enabled = false)
+            priority = 2)
     public void checkAddedToTheCartProductQuantity() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
