@@ -19,7 +19,7 @@ public class CheckoutCompleteTest extends BaseTest {
         assertEquals(thankYouMessage, "Thank you for your order!", "Incorrect message is shown");
     }
 
-    @Test(testName = "backHomeButtonReturnsToProductsPage", description = "Check that Products page is opened when clicking on Back Home button")
+    @Test(testName = "Back Home button returns to Products Page", description = "Check that Products page is opened when clicking on Back Home button")
     public void openProductsPageUsingBackHome() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -32,5 +32,4 @@ public class CheckoutCompleteTest extends BaseTest {
         String pageTitle = productsPage.getPageTitle();
         assertEquals(pageTitle, "Products", "Products page is not opened");
     }
-
 }

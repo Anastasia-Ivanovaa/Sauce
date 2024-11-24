@@ -7,7 +7,7 @@ import static org.testng.Assert.assertEquals;
 
 public class CheckoutInformationTest extends BaseTest {
 
-    @Test(testName = "validCheckoutInfo", description = "Check that Checkout: Overview page is opened")
+    @Test(testName = "Valid Checkout Info", description = "Check that Checkout: Overview page is opened")
     public void successfulCheckoutInfo() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -29,7 +29,7 @@ public class CheckoutInformationTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "checkoutData", testName = "invalidCheckoutInfo", description = "Check that correct message is shown if field is blank")
+    @Test(dataProvider = "checkoutData", testName = "Invalid Checkout Info", description = "Check that correct message is shown if field is blank")
     public void checkoutNegativeTests(String firstName, String lastName, String zipCode, String expectedMessage) {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -42,7 +42,7 @@ public class CheckoutInformationTest extends BaseTest {
                 "The text message is not valid");
     }
 
-    @Test(testName = "checkCancelButton", description = "Check that Cancel button opens Your Cart page ")
+    @Test(testName = "Check Cancel Button", description = "Check that Cancel button opens Your Cart page ")
     public void openShoppingCartByCancelButton() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
