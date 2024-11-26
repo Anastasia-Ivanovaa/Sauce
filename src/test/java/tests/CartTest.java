@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -12,10 +13,11 @@ public class CartTest extends BaseTest {
 
     @Test(testName = "End-to-end test", description = "Add products to the cart>remove products from the cart>check the cart is empty",
             priority = 2)
+    @Description("Add products to the cart>remove products from the cart>check the cart is empty")
     public void checkEndToEndCase() {
         SoftAssert softAssert = new SoftAssert();
         Map<String, String> products = new HashMap<>();
-        products.put("Sauce Labs Backpack", "$29.99");
+        products.put("Sauce Labs Backpack", "$29.97");
         products.put("Sauce Labs Bike Light", "$9.99");
         products.put("Sauce Labs Onesie", "$7.99");
 
@@ -44,6 +46,7 @@ public class CartTest extends BaseTest {
 
     @Test(testName = "Add product to the cart", description = "Check that product is added to the cart",
             priority = 1)
+    @Description("Add product to the cart")
     public void checkAddingProductToTheCart() {
         String productName = "Sauce Labs Backpack";
         loginPage.open();
@@ -56,6 +59,7 @@ public class CartTest extends BaseTest {
 
     @Test(testName = "Remove product from cart", description = "Check that the product is removed from cart",
             priority = 1)
+    @Description("Remove product from cart")
     public void checkRemovingProductFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -67,6 +71,7 @@ public class CartTest extends BaseTest {
 
     @Test(testName = "Open Products page using Continue Shopping button", description = "Check that Continue Shopping opens Products page",
             priority = 1)
+    @Description("Open Products page using Continue Shopping button")
     public void checkContinueShoppingOpensProducts() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -79,6 +84,7 @@ public class CartTest extends BaseTest {
 
     @Test(testName = "Open Checkout page using Checkout button", description = "Check that Checkout button opens Checkout page",
             priority = 1)
+    @Description("Open Checkout page using Checkout button")
     public void checkCheckoutOpensCheckoutPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -91,6 +97,7 @@ public class CartTest extends BaseTest {
 
     @Test(testName = "Quantity of added to the Cart product", description = "Check that quantity of added products is correct in the shopping cart",
             priority = 2)
+    @Description("Quantity of added to the Cart product")
     public void checkAddedToTheCartProductQuantity() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -102,6 +109,7 @@ public class CartTest extends BaseTest {
 
     @Test(testName = "Shopping badge value", description = "Check that the value on shopping badge is correct",
             priority = 2)
+    @Description("Shopping badge value")
     public void checkShoppingBadgeValue() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

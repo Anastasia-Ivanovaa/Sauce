@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,39 +24,47 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Get page title")
     public String getPageTitle() {
         return driver.findElement(PAGE_TITLE).getText();
     }
 
+    @Step("Get the name of Remove button")
     public String getRemoveButton(String product) {
         By removeFromCart = By.xpath(String.format(REMOVE_FROM_CART_PATTERN, product));
         return driver.findElement(removeFromCart).getText();
     }
 
+    @Step("Get the set value in dropdown")
     public String getDropdownValue() {
         return driver.findElement(PRODUCT_SORT_DROPDOWN).getAttribute("value");
     }
 
+    @Step("Add product {product} to the shopping cart")
     public void clickAddButton(String product) {
         By addToCart = By.xpath(String.format(ADD_TO_CART_PATTERN, product));
         driver.findElement(addToCart).click();
     }
 
+    @Step("Click on Remove button")
     public void clickRemoveButton(String product) {
         By removeFromCart = By.xpath((String.format(REMOVE_FROM_CART_PATTERN, product)));
         driver.findElement(removeFromCart).click();
     }
 
+    @Step("Open Shipping cart")
     public void openCart() {
         driver.findElement(SHOPPING_CART).click();
     }
 
+    @Step("Select option {value} in the dropdown")
     public void setOptionInSortedDropdown(String value) {
         WebElement sortedDropdown = driver.findElement(PRODUCT_SORT_DROPDOWN);
         Select dropdown = new Select(sortedDropdown);
         dropdown.selectByVisibleText(value);
     }
 
+    @Step("Get the names of all products on page")
     public ArrayList<String> getAllProductNamesOnPage() {
         ArrayList<WebElement> productsList = new ArrayList<>(driver.findElements(PRODUCT_NAME));
         ArrayList<String> productsName = new ArrayList<>();
@@ -67,6 +76,7 @@ public class ProductsPage extends BasePage {
         return productsName;
     }
 
+    @Step("Get the prices of all products on page")
     public ArrayList<Double> getAllProductPricesOnPage() {
         ArrayList<WebElement> productsList = new ArrayList<>(driver.findElements(PRODUCT_PRICE));
         ArrayList<Double> productsPrice = new ArrayList<>();
@@ -78,6 +88,7 @@ public class ProductsPage extends BasePage {
         return productsPrice;
     }
 
+    @Step("Sort products by option {dropdownOption}")
     public ArrayList<String> sortProductsName(ArrayList<String> productsList, String dropdownOption) {
         ArrayList<String> namesSortedAscending;
         ArrayList<String> namesSortedDescending;
@@ -94,6 +105,7 @@ public class ProductsPage extends BasePage {
         }
     }
 
+    @Step("Sort products by option {dropdownOption}")
     public ArrayList<Double> sortProductsPrice(ArrayList<Double> productsList, String dropdownOption) {
         ArrayList<Double> pricesSortedAscending;
         ArrayList<Double> pricesSortedDescending;

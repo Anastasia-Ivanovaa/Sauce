@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -8,6 +9,7 @@ import static org.testng.Assert.assertEquals;
 public class CheckoutInformationTest extends BaseTest {
 
     @Test(testName = "Valid Checkout Info", description = "Check that Checkout: Overview page is opened")
+    @Description("Valid Checkout Info on Checkout: Information page")
     public void successfulCheckoutInfo() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -30,6 +32,7 @@ public class CheckoutInformationTest extends BaseTest {
     }
 
     @Test(dataProvider = "checkoutData", testName = "Invalid Checkout Info", description = "Check that correct message is shown if field is blank")
+    @Description("Invalid Checkout Info on Checkout: Information page")
     public void checkoutNegativeTests(String firstName, String lastName, String zipCode, String expectedMessage) {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -43,6 +46,7 @@ public class CheckoutInformationTest extends BaseTest {
     }
 
     @Test(testName = "Check Cancel Button", description = "Check that Cancel button opens Your Cart page ")
+    @Description("Return to Shopping cart from Checkout:Information page")
     public void openShoppingCartByCancelButton() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
