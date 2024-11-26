@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -12,6 +13,7 @@ public class ProductsTest extends BaseTest {
 
     @Test(testName = "Remove button", description = "Check that Remove button appears for added to the cart product",
             priority = 2, retryAnalyzer = Retry.class)
+    @Description("Remove button appears for added to the cart product")
     public void checkRemoveButtonAppears() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -22,6 +24,7 @@ public class ProductsTest extends BaseTest {
 
     @Test(testName = "Remove product using Remove button on Products page", description = "Check that Remove button delete added to the cart product",
             priority = 1)
+    @Description("Remove product using Remove button on Products page")
     public void checkRemovingProductFromCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -48,6 +51,7 @@ public class ProductsTest extends BaseTest {
     }
 
     @Test(dataProvider = "dropdownData")
+    @Description("Option can be set in dropdown")
     public void checkDropdown(String option, String optionValue) {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -57,6 +61,7 @@ public class ProductsTest extends BaseTest {
     }
 
     @Test(testName = "Check Products Sorting Z to A", description = "Check that products name are sorted descending")
+    @Description("Products Sorting Z to A")
     public void checkSortZtoA() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -68,6 +73,7 @@ public class ProductsTest extends BaseTest {
     }
 
     @Test(testName = "Check Products Sorting A to Z", description = "Check that products name are sorted ascending")
+    @Description("Products Sorting A to Z")
     public void checkSortAtoZ() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -81,6 +87,7 @@ public class ProductsTest extends BaseTest {
     }
 
     @Test(testName = "Check Products Sorting by price (low to high)", description = "Check that products prices are sorted ascending")
+    @Description("Products Sorting by price (low to high)")
     public void checkSortPriceLowToHigh() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -92,6 +99,7 @@ public class ProductsTest extends BaseTest {
     }
 
     @Test(testName = "Check Products Sorting by price (high to low)", description = "Check that products prices are sorted descending")
+    @Description("Products Sorting by price (high to low)")
     public void checkSortPriceHighToLow() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

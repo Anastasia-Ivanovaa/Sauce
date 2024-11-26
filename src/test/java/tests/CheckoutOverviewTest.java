@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -8,6 +9,7 @@ public class CheckoutOverviewTest extends BaseTest {
 
     @Test(testName = "Added Product is shown on page", description = "Check that product is displayed on page",
             priority = 1)
+    @Description("Product is displayed on Checkout: Overview page")
     public void checkAddedProduct() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -20,6 +22,7 @@ public class CheckoutOverviewTest extends BaseTest {
     }
 
     @Test(testName = "Return to Products page", description = "Check that Products page is opened when click on Cancel button", priority = 1)
+    @Description(("Return to Products page from Checkout: Overview page "))
     public void openProductsPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -33,6 +36,7 @@ public class CheckoutOverviewTest extends BaseTest {
     }
 
     @Test(testName = "Finish Checkout", description = "Check that Checkout: Complete! page is opened when clicking on Finish button")
+    @Description(("Finish Checkout"))
     public void finishCheckout() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
