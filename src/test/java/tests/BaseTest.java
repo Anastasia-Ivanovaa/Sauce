@@ -26,7 +26,7 @@ public class BaseTest {
     CheckoutCompletePage checkoutCompletePage;
 
     @Parameters({"browser"})
-    @BeforeMethod
+    @BeforeMethod(description = "Open browser")
     @Description("Open browser")
     public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
@@ -50,7 +50,7 @@ public class BaseTest {
         checkoutCompletePage = new CheckoutCompletePage(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, description = "Close browser")
     @Description("Close browser")
     public void tearDown(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
