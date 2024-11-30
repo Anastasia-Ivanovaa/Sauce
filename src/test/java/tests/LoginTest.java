@@ -30,13 +30,13 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "LoginData")
     public Object[][] loginData() {
         return new Object[][]{
-                {"", "secret_sauce", "Epic sadface: Username is require"},
+                {"", "secret_sauce", "Epic sadface: Username is required"},
                 {"standard_user", "", "Epic sadface: Password is required"},
                 {"standard_user", "123456", "Epic sadface: Username and password do not match any user in this service"}
         };
     }
 
-    @Test(dataProvider = "LoginData", testName = "Invalid login data")
+    @Test(dataProvider = "LoginData", testName = "Invalid login data", description = "Check that user cannot login with invalid data" )
     @Description("Negative login check")
     public void test(String user, String password, String expectedError) {
         loginPage.open();
