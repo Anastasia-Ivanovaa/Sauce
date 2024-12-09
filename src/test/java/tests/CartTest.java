@@ -17,7 +17,7 @@ public class CartTest extends BaseTest {
     public void checkEndToEndCase() {
         SoftAssert softAssert = new SoftAssert();
         Map<String, String> products = new HashMap<>();
-        products.put("Sauce Labs Backpack", "$29.97");
+        products.put("Sauce Labs Backpack", "$29.99");
         products.put("Sauce Labs Bike Light", "$9.99");
         products.put("Sauce Labs Onesie", "$7.99");
 
