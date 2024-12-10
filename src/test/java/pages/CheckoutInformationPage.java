@@ -1,9 +1,11 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Slf4j
 public class CheckoutInformationPage extends BasePage {
 
     private final By PAGE_TITLE = By.cssSelector(".title");
@@ -25,6 +27,7 @@ public class CheckoutInformationPage extends BasePage {
 
     @Step("Add checkout information first name: {firstName}, last name{lastName}, zip code: {zipCode}")
     public void addCheckoutInfo(String firstName, String lastName, String zipCode) {
+        log.info("Add checkout information first name: {}, last name{}, zip code: {}", firstName, lastName, zipCode);
         driver.findElement(FIRST_NAME_FIELD).click();
         driver.findElement(FIRST_NAME_FIELD).sendKeys(firstName);
         driver.findElement(LAST_NAME_FIELD).sendKeys(lastName);
@@ -34,11 +37,13 @@ public class CheckoutInformationPage extends BasePage {
 
     @Step("Click on Cancel button")
     public void returnToShoppingCart() {
+        log.info("Return to the cart");
         driver.findElement(CANCEL_BUTTON).click();
     }
 
     @Step("Get the error message")
     public String getErrorMessage() {
+        log.info("Get the error message");
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 }

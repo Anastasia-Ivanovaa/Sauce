@@ -13,6 +13,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.*;
 import utils.AllureUtils;
+import utils.PropertyReader;
 
 import java.time.Duration;
 
@@ -25,6 +26,9 @@ public class BaseTest {
     CheckoutInformationPage checkoutInformationPage;
     CheckoutOverviewPage checkoutOverviewPage;
     CheckoutCompletePage checkoutCompletePage;
+
+    String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @Parameters({"browser"})
     @BeforeMethod(description = "Open browser")
