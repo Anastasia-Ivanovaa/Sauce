@@ -27,10 +27,8 @@ public class BaseTest {
     CheckoutOverviewPage checkoutOverviewPage;
     CheckoutCompletePage checkoutCompletePage;
 
-    String user = System.getProperty("user", PropertyReader.getProperty("user"));
-    String password = System.getProperty("password", PropertyReader.getProperty("password"));
-    String base_url = System.getProperty(PropertyReader.getProperty("base_url"));
-
+    String user = System.getProperty("user");
+    String password = System.getProperty("password");
 
     @Parameters({"browser"})
     @BeforeMethod(description = "Open browser")
