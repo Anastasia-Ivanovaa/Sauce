@@ -36,4 +36,4 @@ jobs:
           browser: firefox
           version: latest
       - name: Test run
-        run: mvn clean test -DsuiteXmlFile='src/test/resources/CrossBrowser.xml' -Duser=$USERNAME -Dpassword=$PASSWORD
+        run: mvn clean test -DsuiteXmlFile='src/test/resources/Regression.xml' -Duser=$USERNAME -Dpassword=$PASSWORD
