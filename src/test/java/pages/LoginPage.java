@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
 
     @Step("Open Login page")
     public void open() {
-        log.info("Accounts page is opened");
+        log.info("Login page is opened");
         driver.get("https://www.saucedemo.com/");
     }
 
