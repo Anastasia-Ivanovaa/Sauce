@@ -22,7 +22,7 @@ public class CartTest extends BaseTest {
         products.put("Sauce Labs Onesie", "$7.99");
 
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.clickAddButton("Sauce Labs Onesie");
@@ -50,7 +50,7 @@ public class CartTest extends BaseTest {
     public void checkAddingProductToTheCart() {
         String productName = "Sauce Labs Backpack";
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         String addedProductNameInTheCart = shoppingCartPage.getAddedProductName(productName);
@@ -62,7 +62,7 @@ public class CartTest extends BaseTest {
     @Description("Remove product from cart")
     public void checkRemovingProductFromCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.openCart();
         shoppingCartPage.clickRemoveButton("Sauce Labs Bike Light");
@@ -74,7 +74,7 @@ public class CartTest extends BaseTest {
     @Description("Open Products page using Continue Shopping button")
     public void checkContinueShoppingOpensProducts() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.openCart();
         shoppingCartPage.clickOnContinueShoppingButton();
@@ -87,7 +87,7 @@ public class CartTest extends BaseTest {
     @Description("Open Checkout page using Checkout button")
     public void checkCheckoutOpensCheckoutPage() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();
@@ -100,7 +100,7 @@ public class CartTest extends BaseTest {
     @Description("Quantity of added to the Cart product")
     public void checkAddedToTheCartProductQuantity() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.openCart();
         String productQuantity = shoppingCartPage.getProductQuantity("Sauce Labs Bike Light");
@@ -112,7 +112,7 @@ public class CartTest extends BaseTest {
     @Description("Shopping badge value")
     public void checkShoppingBadgeValue() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Bike Light");
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.clickAddButton("Sauce Labs Bolt T-Shirt");

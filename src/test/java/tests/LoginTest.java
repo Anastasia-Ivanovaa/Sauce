@@ -1,11 +1,13 @@
 package tests;
 
 import io.qameta.allure.*;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+@Log4j2
 public class LoginTest extends BaseTest {
 
     @Test(testName = "Login into the application", description = "Check positive login", priority = 1)
@@ -21,7 +23,7 @@ public class LoginTest extends BaseTest {
     @Flaky
     public void checkLogin() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         assertEquals(productsPage.getPageTitle(),
                 "Products",
                 "The page Products was not opened");
@@ -30,9 +32,9 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "LoginData")
     public Object[][] loginData() {
         return new Object[][]{
-                {"", "secret_sauce", "Epic sadface: Username is required"},
-                {"standard_user", "", "Epic sadface: Password is required"},
-                {"standard_user", "123456", "Epic sadface: Username and password do not match any user in this service"}
+                {"", password, "Epic sadface: Username is required"},
+                {user, "", "Epic sadface: Password is required"},
+                {user, "123456", "Epic sadface: Username and password do not match any user in this service"}
         };
     }
 

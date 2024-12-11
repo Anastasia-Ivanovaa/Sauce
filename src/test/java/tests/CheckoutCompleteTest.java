@@ -11,7 +11,7 @@ public class CheckoutCompleteTest extends BaseTest {
     @Description("Check thank you message is correct")
     public void checkThankYouMessage() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();
@@ -25,7 +25,7 @@ public class CheckoutCompleteTest extends BaseTest {
     @Description("Back Home button returns to Products Page")
     public void openProductsPageUsingBackHome() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();

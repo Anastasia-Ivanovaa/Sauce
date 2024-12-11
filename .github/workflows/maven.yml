@@ -14,10 +14,14 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  USERNAME: ${{secrets.USER_NAME}}
+  PASSWORD: ${{secrets.USER_PASSWORD}}
+
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -32,4 +36,4 @@ jobs:
           browser: firefox
           version: latest
       - name: Test run
-        run: mvn clean test -DsuiteXmlFile='src/test/resources/CrossBrowser.xml'
+        run: mvn clean test -DsuiteXmlFile='src/test/resources/CrossBrowser.xml' -Duser=$USERNAME -Dpassword=$PASSWORD

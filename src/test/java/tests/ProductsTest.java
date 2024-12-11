@@ -16,7 +16,7 @@ public class ProductsTest extends BaseTest {
     @Description("Remove button appears for added to the cart product")
     public void checkRemoveButtonAppears() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Bolt T-Shirt");
         String removeButton = productsPage.getRemoveButton("Sauce Labs Bolt T-Shirt");
         assertEquals(removeButton, "Remove", "Remove button is NOT available.");
@@ -28,7 +28,7 @@ public class ProductsTest extends BaseTest {
     public void checkRemovingProductFromCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Bolt T-Shirt");
         productsPage.openCart();
         String addedToTheCartProductName = shoppingCartPage.getAddedProductName("Sauce Labs Bolt T-Shirt");
@@ -54,7 +54,7 @@ public class ProductsTest extends BaseTest {
     @Description("Option can be set in dropdown")
     public void checkDropdown(String option, String optionValue) {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.setOptionInSortedDropdown(option);
         String setOption = productsPage.getDropdownValue();
         assertEquals(setOption, optionValue, "The set option is incorrect.");
@@ -64,7 +64,7 @@ public class ProductsTest extends BaseTest {
     @Description("Products Sorting Z to A")
     public void checkSortZtoA() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         ArrayList<String> productsListBeforeSort = new ArrayList<>(productsPage.getAllProductNamesOnPage());
         productsPage.setOptionInSortedDropdown("Name (Z to A)");
         ArrayList<String> productsListAfterSort = new ArrayList<>(productsPage.getAllProductNamesOnPage());
@@ -76,7 +76,7 @@ public class ProductsTest extends BaseTest {
     @Description("Products Sorting A to Z")
     public void checkSortAtoZ() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         ArrayList<String> productsListBeforeSort = new ArrayList<>(productsPage.getAllProductNamesOnPage());
         productsPage.setOptionInSortedDropdown("Name (A to Z)");
         ArrayList<String> productsListAfterSort = new ArrayList<>(productsPage.getAllProductNamesOnPage());
@@ -90,7 +90,7 @@ public class ProductsTest extends BaseTest {
     @Description("Products Sorting by price (low to high)")
     public void checkSortPriceLowToHigh() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         ArrayList<Double> productsListBeforeSort = new ArrayList<>(productsPage.getAllProductPricesOnPage());
         productsPage.setOptionInSortedDropdown("Price (low to high)");
         ArrayList<Double> productsListAfterSort = new ArrayList<>(productsPage.getAllProductPricesOnPage());
@@ -102,7 +102,7 @@ public class ProductsTest extends BaseTest {
     @Description("Products Sorting by price (high to low)")
     public void checkSortPriceHighToLow() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         ArrayList<Double> productsListBeforeSort = new ArrayList<>(productsPage.getAllProductPricesOnPage());
         productsPage.setOptionInSortedDropdown("Price (high to low)");
         ArrayList<Double> productsListAfterSort = new ArrayList<>(productsPage.getAllProductPricesOnPage());

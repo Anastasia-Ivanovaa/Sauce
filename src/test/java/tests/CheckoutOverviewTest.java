@@ -12,7 +12,7 @@ public class CheckoutOverviewTest extends BaseTest {
     @Description("Product is displayed on Checkout: Overview page")
     public void checkAddedProduct() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();
@@ -25,7 +25,7 @@ public class CheckoutOverviewTest extends BaseTest {
     @Description(("Return to Products page from Checkout: Overview page "))
     public void openProductsPage() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();
@@ -39,7 +39,7 @@ public class CheckoutOverviewTest extends BaseTest {
     @Description(("Finish Checkout"))
     public void finishCheckout() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();

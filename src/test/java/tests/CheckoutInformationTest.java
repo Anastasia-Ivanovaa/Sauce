@@ -12,7 +12,7 @@ public class CheckoutInformationTest extends BaseTest {
     @Description("Valid Checkout Info on Checkout: Information page")
     public void successfulCheckoutInfo() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();
@@ -35,7 +35,7 @@ public class CheckoutInformationTest extends BaseTest {
     @Description("Invalid Checkout Info on Checkout: Information page")
     public void checkoutNegativeTests(String firstName, String lastName, String zipCode, String expectedMessage) {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();
@@ -49,7 +49,7 @@ public class CheckoutInformationTest extends BaseTest {
     @Description("Return to Shopping cart from Checkout:Information page")
     public void openShoppingCartByCancelButton() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.openCart();
         shoppingCartPage.clickOnCheckoutButton();

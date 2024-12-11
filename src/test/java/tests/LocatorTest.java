@@ -15,8 +15,8 @@ public class LocatorTest extends BaseTest {
         WebElement passwordField = driver.findElement(By.name("password"));
         WebElement logoOnLoginPage = driver.findElement(By.className("login_logo"));
         WebElement bodyOnLoginPage = driver.findElement(By.tagName("body"));
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("user-name")).sendKeys(user);
+        driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-button")).click();
         WebElement theFirstItemName = driver.findElement(By.linkText("Sauce Labs Backpack"));
         WebElement theSecondItemName = driver.findElement(By.partialLinkText("Bike"));
