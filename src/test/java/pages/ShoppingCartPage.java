@@ -3,7 +3,10 @@ package pages;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 @Log4j2
 public class ShoppingCartPage extends BasePage {
@@ -65,7 +68,13 @@ public class ShoppingCartPage extends BasePage {
     public void clickRemoveButton(String product) {
         log.info("Remove product {} from the cart", product);
         By removeFromCart = By.xpath(String.format(REMOVE_FORM_CART_PATTERN, product));
-        driver.findElement(removeFromCart).click();
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(removeFromCart)).click();
+//          driver.findElement(removeFromCart).click();
+        } catch (TimeoutException e) {
+            log.error(e.getMessage());
+            Assert.fail("Remove button isn't found");
+        }
     }
 
     @Step("Click on Continue Shopping button")
