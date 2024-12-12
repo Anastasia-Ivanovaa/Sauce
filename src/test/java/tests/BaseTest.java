@@ -36,14 +36,14 @@ public class BaseTest {
     public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
-            options.addArguments("start-maximized");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
             options.addArguments("--disable-extensions");
             options.addArguments("--remote-allow-origins=*");
-            options.addArguments("--headless");
+            if (System.getProperty("headless", "true").equals("true")) {
+                options.addArguments("--headless");
+            }
             options.addArguments("--start-maximized");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("edge")) {
