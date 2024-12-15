@@ -32,7 +32,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Running test
-        run: mvn clean test -DsuiteXmlFile='src/test/resources/Regression.xml' -Duser=$USERNAME -Dpassword=$PASSWORD
+        run: mvn clean test -DsuiteXmlFile='src/test/resources/SmokeTest.xml' -Duser=$USERNAME -Dpassword=$PASSWORD
 
       - name: Get Allure history
         uses: actions/checkout@v2
